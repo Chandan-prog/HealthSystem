@@ -1,0 +1,35 @@
+@if (!userAvailable) {
+<div>
+  <app-sign-up></app-sign-up>
+  <div
+    style="
+      border: 1px solid black;
+      width: 20%;
+      margin: auto;
+      padding-bottom: 15px;
+      border-radius: 10px;
+      background: #170909;
+    "
+  >
+    <p>Already have an account? Kindly click on the Log In button!</p>
+    <button (click)="showLogInForm()">LOG IN</button>
+  </div>
+</div>
+} @else {
+<div>
+  <app-log-in></app-log-in>
+  <div
+    style="
+      border: 1px solid black;
+      width: 20%;
+      margin: auto;
+      padding-bottom: 15px;
+      border-radius: 10px;
+      background: #170909;
+    "
+  >
+    <p>Don't have an account? Kindly click on the Sign Up button!</p>
+    <button (click)="showSignUpForm()">Sign Up</button>
+  </div>
+</div>
+}

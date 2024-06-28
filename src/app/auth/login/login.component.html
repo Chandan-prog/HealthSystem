@@ -1,0 +1,50 @@
+<div
+  class="main-container"
+>
+  <h1>LOG ME IN!</h1>
+  <form (ngSubmit)="onLogIn()">
+    <div style="display: flex; flex-direction: column">
+      <div class="input-container">
+        <label
+          style="font-weight: bolder; padding-bottom: 10px"
+          for="employee-id"
+          >Employee Id</label
+        >
+        <input
+          type="string"
+          id="employee-id"
+          name="employee-id"
+          style="height: 40px; padding: 0px 25px"
+          [(ngModel)]="enteredEmployeeId"
+        />
+        <div *ngIf="errorObject.loginError" style="background-color: red">
+          <p style="color: white; font-weight: bolder">
+            {{ errorObject.loginError }}
+          </p>
+        </div>
+      </div>
+      <div class="input-container">
+        <label
+          style="font-weight: bolder; padding-bottom: 10px"
+          for="user-password"
+          >Password</label
+        >
+        <input
+          type="password"
+          id="user-password"
+          name="user-password"
+          style="height: 40px; padding: 0px 25px"
+          [(ngModel)]="enteredPassword"
+        />
+        <div *ngIf="errorObject.passwordError" style="background-color: red">
+          <p style="color: white; font-weight: bolder">
+            {{ errorObject.passwordError }}
+          </p>
+        </div>
+      </div>
+      <div style="padding-bottom: 15px">
+        <button type="submit">Login</button>
+      </div>
+    </div>
+  </form>
+</div>

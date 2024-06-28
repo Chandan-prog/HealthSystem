@@ -1,0 +1,65 @@
+<div class="main-container">
+  <h1>SIGN ME UP!</h1>
+  <form (ngSubmit)="onSignUp()">
+    <div style="display: flex; flex-direction: column">
+      <div
+      class="input-container"
+      >
+        <label
+          style="font-weight: bolder; padding-bottom: 10px"
+          for="employee-id"
+          >Employee Id</label
+        >
+        <input
+          type="string"
+          id="employee-id"
+          name="employee-id"
+          style="height: 40px; padding: 0px 25px"
+          [(ngModel)]="enteredEmployeeId"
+        />
+      </div>
+      <div
+        class="input-container"
+      >
+        <label style="font-weight: bolder; padding-bottom: 10px" for="user-name"
+          >User Name</label
+        >
+        <input
+          type="text"
+          id="user-name"
+          name="user-name"
+          style="height: 40px; padding: 0px 25px"
+          [(ngModel)]="enteredUserName"
+        />
+      </div>
+      <div
+      class="input-container"
+      >
+        <label
+          style="font-weight: bolder; padding-bottom: 10px"
+          for="user-password"
+          >Password</label
+        >
+        <input
+          type="password"
+          id="user-password"
+          name="user-password"
+          style="height: 40px; padding: 0px 25px"
+          [(ngModel)]="enteredPassword"
+        />
+      </div>
+      <div style="padding-bottom: 15px">
+        <button type="submit">Sign Up</button>
+      </div>
+      @if (errorObject.singUpError) {
+        <div style="background-color: red">
+          <p style="color: white; font-weight: bolder">
+            {{ errorObject.singUpError }}
+          </p>
+        </div>
+      }
+    </div>
+  </form>
+</div>
+
+
