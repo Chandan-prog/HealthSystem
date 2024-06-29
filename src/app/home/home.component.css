@@ -1,0 +1,27 @@
+.intro{
+    align-items: center;
+    padding-bottom: 40px;
+}
+.home-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.person-card{
+    background-color: #eaeae4;
+    color: black;
+    height: 210px;
+    padding: 25px;
+    border-radius: 5px;
+    width: 290px;
+}
+
+.person-card:hover{
+    border: 1px solid black;
+}
+
+.person-card img{
+    height: 50px;
+    width: 50px;
+}
