@@ -17,10 +17,12 @@ export const routes: Routes = [
     },
     {
         path: 'doctor',
-        component: DoctorComponent
+        component: DoctorComponent,
+        canActivate: [AuthGuard],
     },
     {
         path: 'patient',
-        component: PatientComponent
+        component: PatientComponent,
+        canActivate: [AuthGuard],
     },
 ];

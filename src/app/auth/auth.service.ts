@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { DUMMY_DOCTORS } from '../dummy-doctors';
 
 @Injectable({
   providedIn: 'root',
@@ -20,9 +21,9 @@ export class AuthService {
     return this.employeeId.asObservable();
   }
 
-  get currentEmployeeIdValue(): string | null {
-    return this.employeeId.value;
-  }
+  // get currentEmployeeIdValue(): string | null {
+  //   return this.employeeId.value;
+  // }
 
   checkUserExists(employeeId: string): boolean {
     return localStorage.getItem('userLoginData' + employeeId) !== null;
@@ -49,6 +50,7 @@ export class AuthService {
     if (user && user.password === password) {
       this.loggedIn.next(true);
       this.employeeId.next(employeeId);
+      localStorage.setItem('doctors', JSON.stringify(DUMMY_DOCTORS));
       return true;
     } else {
       this.loggedIn.next(false);
@@ -72,6 +74,7 @@ export class AuthService {
     this.saveUserData(user);
     this.loggedIn.next(true);
     this.employeeId.next(user.employeeId);
+    localStorage.setItem('doctors', JSON.stringify(DUMMY_DOCTORS));
     return true;
   }
 }
