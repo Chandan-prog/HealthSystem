@@ -31,7 +31,7 @@ export class SignUpComponent {
 
     if (success) {
       this.errorObject.singUpError = '';
-      // this.router.navigate(['/restaurants'])
+      this.router.navigate(['/home']);
     } else {
       this.errorObject.singUpError =
         'You already have an account, kindly log in!';

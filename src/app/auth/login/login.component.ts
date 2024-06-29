@@ -28,8 +28,8 @@ export class LogInComponent {
     if (success) {
       this.errorObject.loginError = '';
       this.errorObject.passwordError = '';
-      this.router.navigate(['/restaurants'])
-      console.log(this.enteredEmployeeId, this.enteredPassword)
+      this.router.navigate(['/home']);
+      // console.log(this.enteredEmployeeId, this.enteredPassword)
       
     } else {
       const data = this.authService.getUserData(this.enteredEmployeeId);
