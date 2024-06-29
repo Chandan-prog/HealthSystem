@@ -1,9 +1,13 @@
 <div>
   <h2>Doctor's List</h2>
   <div>
-    <button>Add Doctor</button>
-    <button>Remove Doctor</button>
+    <button (click)="addDoctor()">Add Doctor</button>
   </div>
+  @if(showAddDoctorForm)
+  {
+    <app-add-doctor-form (close)="closeModalHandler()"/>
+  }
+
   <div>
     <table class="table">
       <thead>
@@ -12,6 +16,7 @@
         <th>Doctor's Experience</th>
         <th>Doctor's Fee</th>
         <th>Doctor's Availability</th>
+        <th>Actions</th>
       </thead>
       <tbody>
         @for (doctor of doctors; track doctor.id) {
@@ -19,8 +24,9 @@
           <td>{{ doctor.name }}</td>
           <td>{{ doctor.specialization }}</td>
           <td>{{ doctor.experience }}</td>
-          <td>{{ doctor.fee }}</td>
+          <td>{{ doctor.fee |currency : "₹" }}</td>
           <td>{{ doctor.availability }}</td>
+          <td><button class="removeButton" (click)="removeDoctor(doctor.id)">Remove</button></td>
         </tr>
         }
       </tbody>

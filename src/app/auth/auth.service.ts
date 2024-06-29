@@ -50,7 +50,7 @@ export class AuthService {
     if (user && user.password === password) {
       this.loggedIn.next(true);
       this.employeeId.next(employeeId);
-      localStorage.setItem('doctors', JSON.stringify(DUMMY_DOCTORS));
+      // localStorage.setItem('doctors', JSON.stringify(DUMMY_DOCTORS));
       return true;
     } else {
       this.loggedIn.next(false);
@@ -74,7 +74,7 @@ export class AuthService {
     this.saveUserData(user);
     this.loggedIn.next(true);
     this.employeeId.next(user.employeeId);
-    localStorage.setItem('doctors', JSON.stringify(DUMMY_DOCTORS));
+    // localStorage.setItem('doctors', JSON.stringify(DUMMY_DOCTORS));
     return true;
   }
 }

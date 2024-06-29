@@ -1,0 +1,70 @@
+<div class="backdrop" (click)="onCancel()"></div>
+<dialog open>
+  <h2>Add a Doctor!</h2>
+  <form (ngSubmit)="onSubmit()">
+    <p>
+      <label for="doc-id">Doctor's Id</label>
+      <input
+        type="text"
+        id="doc-id"
+        name="doc-id"
+        [(ngModel)]="entered_id"
+      />
+    </p>
+
+    <p>
+        <label for="doc-name">Doctor's Name</label>
+        <input
+          type="text"
+          id="doc-name"
+          name="doc-name"
+          [(ngModel)]="entered_name"
+        />
+      </p>
+
+      <p>
+        <label for="doc-specialisation">Doctor's Specialisation</label>
+        <input
+          type="text"
+          id="doc-specialisation"
+          name="doc-specialisation"
+          [(ngModel)]="entered_specs"
+        />
+      </p>
+
+      <p>
+        <label for="doc-exp">Doctor's Experience</label>
+        <input
+          type="text"
+          id="doc-exp"
+          name="doc-exp"
+          [(ngModel)]="entered_exp"
+        />
+      </p>
+
+      <p>
+        <label for="doc-fee">Fees</label>
+        <input
+          type="text"
+          id="doc-fee"
+          name="doc-fee"
+          [(ngModel)]="entered_fees"
+        />
+      </p>
+
+      <p>
+        <label for="doc-availability">Doctor's Availability</label>
+        <input
+          type="text"
+          id="doc-availability"
+          name="doc-availability"
+          [(ngModel)]="entered_availability"
+        />
+      </p>
+
+    <p class="actions">
+      <button type="button" (click)="onCancel()">Cancel</button>
+      <button type="submit">Add</button>
+    </p>
+  </form>
+</dialog>

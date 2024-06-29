@@ -40,3 +40,7 @@ button:hover {
   background-color: #b5d2c8;
   color: black;
 }
+
+.removeButton{
+  width: 100%;
+}
