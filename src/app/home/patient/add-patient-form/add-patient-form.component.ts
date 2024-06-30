@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { PatientService } from '../patient.service';
+// import { PatientService } from '../patient.service';
 import { DoctorService } from '../../doctor/doctor.service';
 
 @Component({
@@ -20,7 +20,7 @@ export class AddPatientFormComponent {
   entered_status = '';
 
   constructor(
-    private patientService: PatientService,
+    // private patientService: PatientService,
     private doctorService: DoctorService,
     private router: Router
   ) {}
@@ -38,8 +38,8 @@ export class AddPatientFormComponent {
       scheduleDetails: this.entered_appointment_details,
       status: this.entered_status,
     };
-    this.patientService.addPatient(patient);
-    this.doctorService.loadLocalStorage('patients');
-    this.onCancel();
+    // this.patientService.addPatient(patient);
+    // this.doctorService.loadLocalStorage('patients');
+    this.router.navigate(['patient','payment',this.entered_patient_id,{ patient: JSON.stringify(patient) }]);
   }
 }

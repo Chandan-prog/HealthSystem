@@ -1,1 +1,64 @@
-<p>payment-page works!</p>
+<h2>Payment Page</h2>
+@if (patient) {
+    <div>
+        <div class="table-container">
+        <table class="table">
+          <tr>
+            <th>Field</th>
+            <th>Value</th>
+          </tr>
+          <tr>
+            <td>Patient ID</td>
+            <td>{{ patient.pID }}</td>
+          </tr>
+          <tr>
+            <td>Name</td>
+            <td>{{ patient.name }}</td>
+          </tr>
+          <tr>
+            <td>Reason for Visit</td>
+            <td>{{ patient.reasonForVisit }}</td>
+          </tr>
+          <tr>
+            <td>Assigned Doctor</td>
+            <td>{{ patient.assignedDoctor }}</td>
+          </tr>
+          <tr>
+            <td>Schedule Details</td>
+            <td>{{ patient.scheduleDetails }}</td>
+          </tr>
+          <tr>
+            <td>Status</td>
+            <td>{{ patient.status }}</td>
+          </tr>
+        </table>
+    </div>
+      
+        <h3>Payment Method</h3>
+        <form (ngSubmit)="onSubmitPayment()">
+          <p>
+            <label for="card-number">Card Number</label>
+            <input type="number" id="card-number" name="card-number" required  [(ngModel)]="enteredCardNumber"/>
+          </p>
+          <p>
+            <label for="card-holder">Card Holder Name</label>
+            <input type="text" id="card-holder" name="card-holder" required  [(ngModel)]="enteredCardHolderName"/>
+          </p>
+          <p>
+            <label for="expiry-date">Expiry Date</label>
+            <input type="date" id="expiry-date" name="expiry-date" required  [(ngModel)]="enteredExpiryDate"/>
+          </p>
+          <p>
+            <label for="cvv">CVV</label>
+            <input type="text" id="cvv" name="cvv" maxlength="3" required  [(ngModel)]="enteredCVV"/>
+          </p>
+          <p class="actions">
+            <button type="submit">Submit Payment</button>
+          </p>
+        </form>
+      </div>
+}
+@else {
+    <p >No patient data available.</p>
+}
+

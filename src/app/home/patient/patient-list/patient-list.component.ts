@@ -26,7 +26,6 @@ export class PatientListComponent implements OnInit {
   removePatient(id:string)
   {
     this.patients = this.patients.filter((patient) => patient.pID !== id);
-    // localStorage.setItem('patients', JSON.stringify(this.patients));
-    this.doctorService.loadLocalStorage('patients');
+    localStorage.setItem('patients', JSON.stringify(this.patients));
   }
 }

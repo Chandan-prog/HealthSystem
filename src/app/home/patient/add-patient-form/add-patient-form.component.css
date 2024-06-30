@@ -19,7 +19,7 @@
     color: #7dc1a9;
   }
   
-  input
+  input,select
    {
     margin: 10px;
     width: 40%;
