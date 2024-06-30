@@ -20,4 +20,14 @@ export class DoctorService{
             localStorage.setItem('doctors', JSON.stringify(this.doctors));
           }
     }
+    loadLocalStorage(key:string)
+    {
+      const storedItems = localStorage.getItem(key);
+    if (storedItems) {
+      return(JSON.parse(storedItems));
+    } else if(key==='doctors')  {
+      this.doctors = DUMMY_DOCTORS;
+      localStorage.setItem('doctors', JSON.stringify(this.doctors));
+    }
+    }
 }

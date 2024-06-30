@@ -1,0 +1,34 @@
+<div>
+    <router-outlet></router-outlet>
+    <h2>Patients's List</h2>
+    <div>
+      <table class="table">
+        <thead>
+            <th>Patient Id</th>
+          <th>Patient's Name</th>
+          <th>Reason of visit</th>
+          <th>Assigned Doctor</th>
+          <th>Appointment Date and Time</th>
+          <th>Status</th>
+          <th>Reschedule</th>
+          <th>Remove</th>
+        </thead>
+        <tbody> 
+            @for (patient of patients; track patient.pID) {
+                <tr>
+                    <td>{{patient.pID}}</td>
+                    <td>{{patient.name}}</td>
+                    <td>{{patient.reasonForVisit}}</td>
+                    <td>{{patient.assignedDoctor}}</td>
+                    <td>{{patient.scheduleDetails}}</td>
+                    <td>{{patient.status}}</td>
+                    <td><button class="removeButton" [routerLink]="['edit-patient/',patient.pID]">Reschedule</button></td>
+                    <td><button class="removeButton" >Remove</button></td>
+                  </tr>  
+            }
+             
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { DUMMY_DOCTORS } from '../dummy-doctors';
+import { DUMMY_PATIENTS } from '../dummy-patients';
 
 @Injectable({
   providedIn: 'root',
@@ -51,6 +52,7 @@ export class AuthService {
       this.loggedIn.next(true);
       this.employeeId.next(employeeId);
       // localStorage.setItem('doctors', JSON.stringify(DUMMY_DOCTORS));
+      // localStorage.setItem('patients', JSON.stringify(DUMMY_PATIENTS));
       return true;
     } else {
       this.loggedIn.next(false);
@@ -75,6 +77,7 @@ export class AuthService {
     this.loggedIn.next(true);
     this.employeeId.next(user.employeeId);
     // localStorage.setItem('doctors', JSON.stringify(DUMMY_DOCTORS));
+    // localStorage.setItem('patients', JSON.stringify(DUMMY_PATIENTS));
     return true;
   }
 }
