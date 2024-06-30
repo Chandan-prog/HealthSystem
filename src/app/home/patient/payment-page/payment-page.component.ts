@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PatientService } from '../patient.service';
 import { Patient } from '../patient.model';
 import { jsPDF } from 'jspdf';
@@ -21,7 +21,7 @@ export class PaymentPageComponent {
   enteredExpiryDate='';
   enteredCVV='';
 
-  constructor(private route: ActivatedRoute, private patientService: PatientService) {}
+  constructor(private route: ActivatedRoute, private patientService: PatientService, private router:Router) {}
 
   ngOnInit() {
     const patientData = this.route.snapshot.paramMap.get('patient');
@@ -36,6 +36,7 @@ export class PaymentPageComponent {
     console.log('Patient Details:', this.patient);
     alert('Payment Successful!');
     this.generatePDF();
+    this.router.navigate(['/patient'])
   }
 
   generatePDF() {
