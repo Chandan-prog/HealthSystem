@@ -1,1 +1,71 @@
-<p>add-patient-form works!</p>
+<h2>Add a Doctor!</h2>
+<div class="form-container">
+  <form (ngSubmit)="onSubmit()">
+    <p>
+      <label for="patient-id">Patient Id</label>
+      <input
+        type="text"
+        id="patient-id"
+        name="patient-id"
+        [(ngModel)]="entered_patient_id"
+      />
+    </p>
+
+    <p>
+      <label for="patient-name">Patient Name</label>
+      <input
+        type="text"
+        id="patient-name"
+        name="patient-name"
+        [(ngModel)]="entered_patient_name"
+      />
+    </p>
+
+    <p>
+      <label for="reasonForVisit">Doctor's Specialisation</label>
+      <input
+        type="text"
+        id="reasonForVisit"
+        name="reasonForVisit"
+        [(ngModel)]="entered_reason_for_visit"
+      />
+    </p>
+
+    <p>
+      <label for="doc-assigned">Assigned Doctor</label>
+      <input
+        type="text"
+        id="doc-assigned"
+        name="doc-assigned"
+        [(ngModel)]="entered_assigned_doc"
+      />
+    </p>
+
+    <p>
+      <label for="appointment-details">Fees</label>
+      <input
+        type="text"
+        id="appointment-details"
+        name="appointment-details"
+        [(ngModel)]="entered_appointment_details"
+      />
+    </p>
+
+    <p>
+      <label for="status">Doctor's Availability</label>
+      <input
+        type="text"
+        id="status"
+        name="status"
+        [(ngModel)]="entered_status"
+      />
+    </p>
+
+    <p class="actions">
+      <button type="submit">Add</button>
+    </p>
+    <p class="actions">
+      <button type="button" (click)="onCancel()">Cancel</button>
+    </p>
+  </form>
+</div>
