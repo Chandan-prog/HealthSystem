@@ -26,7 +26,7 @@
                     <td>{{patient.scheduleDetails}}</td>
                     <td>{{patient.status}}</td>
                     <td><button class="removeButton" [routerLink]="['edit-patient/',patient.pID]">Reschedule</button></td>
-                    <td><button class="removeButton" >Remove</button></td>
+                    <td><button class="removeButton" (click)="removePatient(patient.pID)">Remove</button></td>
                   </tr>  
             }
              
