@@ -1,6 +1,5 @@
-button {
+/* button {
   width: 100%;
-  /* padding: 0.5rem; */
   border: 1px solid #76c0ae;
   border-radius: 0.25rem;
   background-color: #83e6c0;
@@ -13,6 +12,10 @@ button {
 
 button:hover {
   background-color: #aaf1d6;
+} */
+
+button{
+  width: 100%;
 }
 .header {
   display: flex;

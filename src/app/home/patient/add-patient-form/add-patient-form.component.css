@@ -35,7 +35,7 @@
     margin: 1rem 0 0;
   }
   
-  button {
+  /* button {
     width: 30%;
     padding: 10px;
     border: 1px solid #76c0ae;
@@ -50,8 +50,10 @@
   
   button:hover {
     background-color: #aaf1d6;
+  } */
+  button{
+    width: 30%;
   }
-  
   .form-container{
     margin-bottom: 150px
   }

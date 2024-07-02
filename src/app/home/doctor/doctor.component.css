@@ -1,4 +1,4 @@
-button {
+/* button {
   width: 14%;
   border: 1px solid #76c0ae;
   border-radius: 0.25rem;
@@ -14,6 +14,10 @@ button {
 
 button:hover {
   background-color: #aaf1d6;
+} */
+
+button{
+  width: 14%;
 }
 .table {
   width: 100%;
