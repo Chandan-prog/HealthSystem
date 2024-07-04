@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Patient } from '../patient.model';
 import { DUMMY_PATIENTS } from '../../../dummy-patients';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { DoctorService } from '../../doctor/doctor.service';
 
 @Component({
   selector: 'app-patient-list',
@@ -14,7 +13,6 @@ import { DoctorService } from '../../doctor/doctor.service';
 export class PatientListComponent implements OnInit {
   patients: Patient[] = [];
 
-  constructor(private doctorService:DoctorService) {}
   ngOnInit(): void {
     const storedPatients = localStorage.getItem('patients');
     if (storedPatients) {

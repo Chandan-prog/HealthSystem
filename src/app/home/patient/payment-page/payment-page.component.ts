@@ -26,7 +26,7 @@ export class PaymentPageComponent {
 
   ngOnInit() {
     const patientData = this.route.snapshot.paramMap.get('patient');
-    console.log(patientData);
+    // console.log(patientData);
     if (patientData) {
       this.patient = JSON.parse(patientData);
     }
@@ -35,9 +35,8 @@ export class PaymentPageComponent {
   onSubmitPayment() {
     this.patientService.addPatient(this.patient);
     console.log('Patient Details:', this.patient);
-    // alert('Payment Successful!');
-    this.isPaymentDone = true;
-    
+    this.generatePDF();
+    this.router.navigate(['/patient'])
   }
 
   generatePDF() {

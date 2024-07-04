@@ -5,4 +5,6 @@ export type Patient = {
   assignedDoctor: string;
   scheduleDetails: string;
   status: string;
+  date: string;
+  time: string;
 };
