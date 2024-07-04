@@ -144,7 +144,9 @@ export class EditPatientComponent implements OnInit {
         this.entered_assigned_doc = this.patient.assignedDoctor;
         this.entered_appointment_details = this.patient.scheduleDetails;
         this.entered_status = this.patient.status;
-        const [date, time] = this.patient.scheduleDetails.split(', ');
+        // const [date, time] = this.patient.scheduleDetails.split(', ');
+        const date= this.patient.date;
+        const time = this.patient.time;
         this.entered_appointment_date = this.datePipe.transform(new Date(date), 'yyyy-MM-dd') || '';
         this.entered_appointment_time = this.datePipe.transform(new Date('1970-01-01T' + time), 'HH:mm') || '';
 
