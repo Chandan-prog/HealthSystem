@@ -3,64 +3,51 @@
   <h2>Add a Doctor!</h2>
   <form (ngSubmit)="onSubmit()">
     <p>
-      <label for="doc-id">Doctor's Id</label>
-      <input
-        type="text"
-        id="doc-id"
-        name="doc-id"
-        [(ngModel)]="entered_id"
-      />
+      <label for="doc-name">Doctor's Name</label>
+      <input type="text" id="doc-name" name="doc-name" [(ngModel)]="entered_name" required/>
     </p>
 
     <p>
-        <label for="doc-name">Doctor's Name</label>
-        <input
-          type="text"
-          id="doc-name"
-          name="doc-name"
-          [(ngModel)]="entered_name"
-        />
-      </p>
+      <label for="doc-specialisation">Doctor's Specialisation</label>
+      <!-- <input type="text" id="doc-specialisation" name="doc-specialisation" [(ngModel)]="entered_specs" required/> -->
+      <select id="doc-specialisation" name="doc-specialisation" [(ngModel)]="entered_specs" required>
+        <option value="">Select Specialization</option>
+        <option value="Dermatologist">Dermatologist</option>
+        <option value="Neurologist">Neurologist</option>
+        <option value="Pediatrician">Pediatrician</option>
+        <option value="Orthopedic Surgeon">Orthopedic Surgeon</option>
+        <option value="Gynecologist">Gynecologist</option>
+        <option value="Ophthalmologist">Ophthalmologist</option>
+        <option value="Psychiatrist">Psychiatrist</option>
+        <option value="ENT Specialist">ENT Specialist</option>
+        <option value="Dentist">Dentist</option>
+      </select>
+    </p>
 
-      <p>
-        <label for="doc-specialisation">Doctor's Specialisation</label>
-        <input
-          type="text"
-          id="doc-specialisation"
-          name="doc-specialisation"
-          [(ngModel)]="entered_specs"
-        />
-      </p>
+    <p>
+      <label for="doc-exp">Doctor's Experience</label>
+      <input type="text" id="doc-exp" name="doc-exp" [(ngModel)]="entered_exp" required/>
+    </p>
 
-      <p>
-        <label for="doc-exp">Doctor's Experience</label>
-        <input
-          type="text"
-          id="doc-exp"
-          name="doc-exp"
-          [(ngModel)]="entered_exp"
-        />
-      </p>
+    <p>
+      <label for="doc-fee">Fees</label>
+      <input type="text" id="doc-fee" name="doc-fee" [(ngModel)]="entered_fees" required/>
+    </p>
 
-      <p>
-        <label for="doc-fee">Fees</label>
-        <input
-          type="text"
-          id="doc-fee"
-          name="doc-fee"
-          [(ngModel)]="entered_fees"
-        />
-      </p>
-
-      <p>
-        <label for="doc-availability">Doctor's Availability</label>
-        <input
-          type="text"
-          id="doc-availability"
-          name="doc-availability"
-          [(ngModel)]="entered_availability"
-        />
-      </p>
+    <div>
+      <label for="doc-availability">Doctor's Availability</label>
+      <div>
+        <label><input type="checkbox" name="weekday" value="Monday" [(ngModel)]="entered_weekdays['Monday']" /> Monday</label>
+        <label><input type="checkbox" name="weekday" value="Tuesday" [(ngModel)]="entered_weekdays['Tuesday']" /> Tuesday</label>
+        <label><input type="checkbox" name="weekday" value="Wednesday" [(ngModel)]="entered_weekdays['Wednesday']" /> Wednesday</label>
+        <label><input type="checkbox" name="weekday" value="Thursday" [(ngModel)]="entered_weekdays['Thursday']" /> Thursday</label>
+        <label><input type="checkbox" name="weekday" value="Friday" [(ngModel)]="entered_weekdays['Friday']" /> Friday</label>
+      </div>
+      <label for="doc-start-time">Start Time</label>
+      <input type="time" id="doc-start-time" name="doc-start-time" [(ngModel)]="entered_start_time" required/>
+      <label for="doc-end-time">End Time</label>
+      <input type="time" id="doc-end-time" name="doc-end-time" [(ngModel)]="entered_end_time" required>
+    </div>
 
     <p class="actions">
       <button type="button" (click)="onCancel()">Cancel</button>
@@ -68,3 +55,5 @@
     </p>
   </form>
 </dialog>
+
+

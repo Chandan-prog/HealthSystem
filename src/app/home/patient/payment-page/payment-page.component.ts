@@ -15,6 +15,7 @@ import { jsPDF } from 'jspdf';
 })
 export class PaymentPageComponent {
   patient !: Patient;
+  isPaymentDone = false;
 
   enteredCardNumber = '';
   enteredCardHolderName = '';
@@ -34,9 +35,9 @@ export class PaymentPageComponent {
   onSubmitPayment() {
     this.patientService.addPatient(this.patient);
     console.log('Patient Details:', this.patient);
-    alert('Payment Successful!');
-    this.generatePDF();
-    this.router.navigate(['/patient'])
+    // alert('Payment Successful!');
+    this.isPaymentDone = true;
+    
   }
 
   generatePDF() {
@@ -51,5 +52,12 @@ export class PaymentPageComponent {
     doc.text(`Payment Details: ${this.enteredCardNumber}`, 10, 70);
 
     doc.save('patient-details.pdf');
+  }
+
+  onClose()
+  {
+    this.isPaymentDone = false;
+    this.generatePDF();
+    this.router.navigate(['/patient'])
   }
 }
