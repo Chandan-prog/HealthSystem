@@ -138,6 +138,7 @@ export class EditPatientComponent implements OnInit {
       const patientData = localStorage.getItem('patients');
       const patients = JSON.parse(patientData || '[]');
       this.patient = patients.find((p: Patient) => p.pID === this.id);
+      // this.patient = this.patientService.getPatientById(this.id) || this.getEmptyPatient();;
       if (this.patient) {
         this.entered_patient_id = this.patient.pID;
         this.entered_patient_name = this.patient.name;
@@ -217,6 +218,20 @@ export class EditPatientComponent implements OnInit {
   private formatDateTime(date: string, time: string): string {
     const fullDate = new Date(date + 'T' + time);
     return this.datePipe.transform(fullDate, 'yyyy-MM-dd, h:mm a') || '';
+  }
+
+  private getEmptyPatient(): Patient {
+    return {
+      pID: '',
+      name: '',
+      reasonForVisit: '',
+      assignedDoctor: '',
+      specialization: '',
+      scheduleDetails: '',
+      status: '',
+      date: '',
+      time: ''
+    };
   }
 
 }
