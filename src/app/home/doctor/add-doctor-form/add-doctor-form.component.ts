@@ -36,9 +36,9 @@ export class AddDoctorFormComponent {
   }
   generateUniqueId() {
     const now = new Date();
-    const datePart = now.toISOString().slice(0, 10).replace(/-/g, ''); // YYYYMMDD
-    const timePart = now.toTimeString().slice(0, 8).replace(/:/g, ''); // HHMMSS
-    const idString = `1${datePart}${timePart}`; // Using 1 as a prefix to ensure the string can be converted to a number
+    const datePart = now.toISOString().slice(0, 10).replace(/-/g, ''); 
+    const timePart = now.toTimeString().slice(0, 8).replace(/:/g, ''); 
+    const idString = `1${datePart}${timePart}`; 
     return Number(idString);
   }
   formatTimeTo12Hour(time: string): string {
