@@ -104,6 +104,7 @@ import { Patient } from '../patient.model';
 import { Doctor } from '../../doctor/doctor.model';
 import { DUMMY_DOCTORS } from '../../../dummy-doctors';
 import { DatePipe } from '@angular/common';
+import { PatientService } from '../patient.service';
 
 @Component({
   selector: 'app-edit-patient',
@@ -129,7 +130,7 @@ export class EditPatientComponent implements OnInit {
   availableDoctors: string[] = [];
   doctors: Doctor[] = [];
 
-  constructor(private route: ActivatedRoute, private router: Router, private datePipe: DatePipe) {}
+  constructor(private patientService:PatientService ,private route: ActivatedRoute, private router: Router, private datePipe: DatePipe) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
@@ -142,6 +143,7 @@ export class EditPatientComponent implements OnInit {
         this.entered_patient_name = this.patient.name;
         this.entered_reason_for_visit = this.patient.reasonForVisit;
         this.entered_assigned_doc = this.patient.assignedDoctor;
+        this.entered_specialization = this.patient.specialization;
         this.entered_appointment_details = this.patient.scheduleDetails;
         this.entered_status = this.patient.status;
         // const [date, time] = this.patient.scheduleDetails.split(', ');
@@ -160,28 +162,44 @@ export class EditPatientComponent implements OnInit {
   }
 
   onUpdate() {
+    
+      if (
+        !this.entered_patient_id || 
+        !this.entered_patient_name || 
+        !this.entered_reason_for_visit || 
+        !this.entered_assigned_doc || 
+        !this.entered_specialization || 
+        !this.entered_appointment_date || 
+        !this.entered_appointment_time || 
+        !this.entered_status
+      ) {
+        alert('All fields are important');
+        return;
+      }
     const formattedDateTime = this.formatDateTime(this.entered_appointment_date, this.entered_appointment_time);
     const updatedPatient = {
       pID: this.entered_patient_id,
       name: this.entered_patient_name,
       reasonForVisit: this.entered_reason_for_visit,
       assignedDoctor: this.entered_assigned_doc,
+      specialization: this.entered_specialization,
       scheduleDetails: formattedDateTime,
       status: this.entered_status,
       date: this.entered_appointment_date,
       time: this.entered_appointment_time,
     };
 
-    let storedPatients = localStorage.getItem('patients');
-    let patients = storedPatients ? JSON.parse(storedPatients) : [];
+    // let storedPatients = localStorage.getItem('patients');
+    // let patients = storedPatients ? JSON.parse(storedPatients) : [];
 
-    const index = patients.findIndex((p: Patient) => p.pID === this.id);
-    if (index !== -1) {
-      patients[index] = updatedPatient;
-      localStorage.setItem('patients', JSON.stringify(patients));
-    }
+    // const index = patients.findIndex((p: Patient) => p.pID === this.id);
+    // if (index !== -1) {
+    //   patients[index] = updatedPatient;
+    //   localStorage.setItem('patients', JSON.stringify(patients));
+    // }
 
-    console.log(updatedPatient);
+    // console.log(updatedPatient);
+    this.patientService.updatePatient(updatedPatient);
     this.router.navigate(['/patient']);
   }
 

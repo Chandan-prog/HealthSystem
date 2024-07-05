@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Patient } from '../patient.model';
 import { DUMMY_PATIENTS } from '../../../dummy-patients';
 import { RouterLink, RouterOutlet } from '@angular/router';
+import { PatientService } from '../patient.service';
 
 @Component({
   selector: 'app-patient-list',
@@ -13,6 +14,11 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 export class PatientListComponent implements OnInit {
   patients: Patient[] = [];
 
+  constructor(private patientService: PatientService,)
+  {
+
+  }
+
   ngOnInit(): void {
     const storedPatients = localStorage.getItem('patients');
     if (storedPatients) {
@@ -23,7 +29,9 @@ export class PatientListComponent implements OnInit {
   }
   removePatient(id:string)
   {
-    this.patients = this.patients.filter((patient) => patient.pID !== id);
-    localStorage.setItem('patients', JSON.stringify(this.patients));
+    if (confirm('Are you sure you want to delete this patient?')) {
+      this.patientService.removePatient(id);
+      this.patients = this.patientService.getAllPatients();
+    }
   }
 }

@@ -20,4 +20,25 @@ export class PatientService{
             localStorage.setItem('patients', JSON.stringify(this.patients));
           }
     }
+    getAllPatients(): Patient[] {
+      return this.patients;
+    }
+  
+    getPatientById(id: string): Patient | undefined {
+      return this.patients.find(p => p.pID === id);
+    }
+  
+    updatePatient(updatedPatient: Patient): void {
+      const index = this.patients.findIndex(p => p.pID === updatedPatient.pID);
+      if (index !== -1) {
+        this.patients[index] = updatedPatient;
+        localStorage.setItem('patients', JSON.stringify(this.patients));
+      }
+    }
+  
+    removePatient(id: string): void {
+      this.patients = this.patients.filter(patient => patient.pID !== id);
+      localStorage.setItem('patients', JSON.stringify(this.patients));
+    }
+  
 }

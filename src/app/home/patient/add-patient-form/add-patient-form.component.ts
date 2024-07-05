@@ -44,6 +44,7 @@
   import { Doctor } from '../../doctor/doctor.model';
   import { DUMMY_DOCTORS } from '../../../dummy-doctors';
   import { CommonModule, DatePipe } from '@angular/common';
+  import { PatientService } from '../patient.service';
 
   @Component({
     selector: 'app-add-patient-form',
@@ -66,7 +67,7 @@
     doctors: Doctor[] = [];
 
 
-    constructor(private router: Router,private datePipe: DatePipe) {}
+    constructor(private patientService: PatientService, private router: Router,private datePipe: DatePipe) {}
     ngOnInit() {
       const storedDoctors = localStorage.getItem('doctors');
       if (storedDoctors) {
@@ -81,6 +82,18 @@
     }
 
     onSubmit() {
+      if (
+        !this.entered_patient_name || 
+        !this.entered_reason_for_visit || 
+        !this.entered_assigned_doc || 
+        !this.entered_specialization || 
+        !this.entered_appointment_date || 
+        !this.entered_appointment_time || 
+        !this.entered_status
+      ) {
+        alert('All fields are important');
+        return;
+      }
       const timestamp = new Date().getTime().toString();
       const pID = 'P' + timestamp; 
       const formattedDateTime = this.formatDateTime(this.entered_appointment_date, this.entered_appointment_time);
@@ -89,6 +102,7 @@
         name: this.entered_patient_name,
         reasonForVisit: this.entered_reason_for_visit,
         assignedDoctor: this.entered_assigned_doc,
+        specialization: this.entered_specialization,
         scheduleDetails: formattedDateTime,
         status: this.entered_status,
         date: this.entered_appointment_date,

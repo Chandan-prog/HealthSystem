@@ -34,7 +34,6 @@ export class PaymentPageComponent {
 
   onSubmitPayment() {
     this.patientService.addPatient(this.patient);
-    console.log('Patient Details:', this.patient);
     this.generatePDF();
     this.router.navigate(['/patient'])
   }
